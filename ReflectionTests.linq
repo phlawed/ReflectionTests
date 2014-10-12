@@ -8,12 +8,17 @@
 void Main()
 {
 	var consoleProperties = typeof(Console).GetProperties();
-
+	var type = typeof(Console);
+	
 	foreach(var consoleProperty in consoleProperties)
 	{
-		Console.WriteLine(consoleProperty.Name.ToString());
-		Console.WriteLine(consoleProperty.GetValue(null).ToString());
+		Console.WriteLine(consoleProperty.ToString());
+
+		var name = consoleProperty.Name.ToString();
+		var consolePropertyType = consoleProperty.PropertyType;
+		Console.WriteLine("{0} {1}", consolePropertyType, name);
+
+		if(!string.Equals(name, "BufferHeight", StringComparison.OrdinalIgnoreCase))
+			Console.WriteLine(consoleProperty.GetValue(type).ToString());
 	}
 }
-
-//This seems to work up until Property BufferHeight when it barfs
