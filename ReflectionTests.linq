@@ -4,7 +4,6 @@
 
 //How to get the actual value in each case?
 
-//Whoops.  GetValue is a method of the PropertyInfo class.
 
 void Main()
 {
@@ -12,7 +11,8 @@ void Main()
 
 	foreach(var consoleProperty in consoleProperties)
 	{
-		Console.WriteLine(Console.GetValue(consoleProperty));
+		//Just returns None for each...
+		Console.WriteLine(consoleProperty.Attributes);
 	}
 }
 
