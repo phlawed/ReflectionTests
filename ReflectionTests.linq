@@ -35,3 +35,16 @@ void Main()
 			Console.WriteLine("\t Value = {0}", consoleProperty.GetValue(type).ToString());
 	}
 }
+
+
+//why doesn’t this work:
+//
+//		if(!listOfExcludedProperties.Select(x => x == name).Any())
+//or
+//		if(!listOfExcludedProperties.Where(x => x == name).Any())
+//
+//instead of 
+//
+//		if(!listOfExcludedProperties.Any(x => x == name))
+//
+//(returns false for everything)
