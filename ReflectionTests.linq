@@ -11,9 +11,9 @@ void Main()
 
 	foreach(var consoleProperty in consoleProperties)
 	{
-		//Just returns None for each...
-		Console.WriteLine(consoleProperty.Attributes);
+		Console.WriteLine(consoleProperty.Name.ToString());
+		Console.WriteLine(consoleProperty.GetValue(null).ToString());
 	}
 }
 
-
+//This seems to work up until Property BufferHeight when it barfs
