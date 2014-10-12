@@ -4,21 +4,34 @@
 
 //How to get the actual value in each case?
 
+//Hack solution:  (still need to know why we can’t access these properties)
 
 void Main()
 {
 	var consoleProperties = typeof(Console).GetProperties();
 	var type = typeof(Console);
 	
+	var listOfExcludedProperties = new List<string>();
+	listOfExcludedProperties.Add("BufferHeight");
+	listOfExcludedProperties.Add("BufferWidth");
+	listOfExcludedProperties.Add("WindowHeight");
+	listOfExcludedProperties.Add("WindowWidth");
+	listOfExcludedProperties.Add("WindowLeft");
+	listOfExcludedProperties.Add("WindowTop");
+	listOfExcludedProperties.Add("CursorLeft");
+	listOfExcludedProperties.Add("CursorTop");
+	listOfExcludedProperties.Add("CursorSize");
+	listOfExcludedProperties.Add("CursorVisible");
+	listOfExcludedProperties.Add("KeyAvailable");
+	listOfExcludedProperties.Add("TreatControlCAsInput");
+
 	foreach(var consoleProperty in consoleProperties)
 	{
 		Console.WriteLine(consoleProperty.ToString());
 
 		var name = consoleProperty.Name.ToString();
-		var consolePropertyType = consoleProperty.PropertyType;
-		Console.WriteLine("{0} {1}", consolePropertyType, name);
 
-		if(!string.Equals(name, "BufferHeight", StringComparison.OrdinalIgnoreCase))
-			Console.WriteLine(consoleProperty.GetValue(type).ToString());
+		if(!listOfExcludedProperties.Any(x => x == name))
+			Console.WriteLine("\t Value = {0}", consoleProperty.GetValue(type).ToString());
 	}
 }
