@@ -2,9 +2,15 @@
   <Reference>&lt;RuntimeDirectory&gt;\System.dll</Reference>
 </Query>
 
-//Idea:  Is there a way to loop thru all properties of a class?
+//But what properties (?) of a PropertyInfo are the results?  Seems to be made of two components
 
-//Investigation suggested GetProperties:
+//Results:
+//Boolean IsInputRedirected
+//Boolean IsOutputRedirected
+//Boolean IsErrorRedirected
+//System.IO.TextReader In
+
+//How to get the actual value in each case?
 
 void Main()
 {
@@ -14,7 +20,6 @@ void Main()
 	{
 		Console.WriteLine(consoleProperty.ToString());
 	}
-	
 }
 
 
